@@ -1,0 +1,91 @@
+<view class="headerSearch headerBg" style="position: fixed;top: 0;left: 0;right:0;z-index: 9999;">
+    <!-- <import src="../../../common/head.wxml" /> -->
+</view>
+<view class="content" style="margin-top: 40px;">
+
+  <view class="banner">
+    <view class="swiper-container">
+        <view class="swiper-wrapper">
+            <block wx:for="{{ConfBanners}}" wx:key="unique">    
+              <view class="swiper-slide" wx:if="{{item.type == 1}}">
+                <navigator url="url">
+                  <image src="{{item.cover}}"></image>
+                </navigator>
+              </view>        
+              <view class="swiper-slide" wx:if="{{item.type == 0}}">
+                <navigator url="url">
+                  <image src="{{item.cover}}"></image>
+                </navigator>
+              </view>
+            </block>
+        </view>
+        <view class="pagination"></view>
+    </view>
+  </view>
+
+  <view class="branchGroup lineB mb-6">
+      <block wx:for="{{ConfPavilions.list}}" wx:key="unique">
+      <dl>
+        <navigator url="../pavilion/index?pavilionId={{item.id}}">
+          <dt>
+          <image src="{{item.cover}}"></image>
+          </dt>
+          <dd>{{item.name}}</dd>
+        </navigator>
+      </dl>
+    </block>
+  </view>
+
+  <view class="wellChosen mb-6">
+  <view>精选专题</view>
+    <block wx:for="{{ThemesGoods.theme}}" wx:key="unique">
+        <view class="box lineB">   
+          <view class="swiper-slide" wx:if="{{item.url_type == 1}}">
+            <navigator url="../goods/goods?goodId={{item.url}}">
+              <image src="{{item.cover}}"></image>
+            </navigator>       
+          </view>
+          <view class="swiper-slide" wx:if="{{item.url_type == 0}}">
+            <navigator url="{{item.url}}">
+              <img src="{{item.cover}}"/>
+            </navigator> 
+          </view>   
+        </view>
+    </block>
+  </view>
+
+  <view class="wellChosen mb-6">
+  <view>精选推荐</view>
+    <block wx:for="{{ThemesGoods.recommend}}" wx:key="unique" wx:for-item="ThemesGood">  
+      <view class="box lineB">
+          <navigator url="../goods/goods?goodsId={{ThemesGood.id}}">
+            <image src="{{ThemesGood.cover}}"></image>
+            <view class="description">{{ThemesGood.title}}</view>
+          </navigator>
+          <view>
+            <view>原价：￥<view class="text-line market">{{ThemesGood.price_market}}</view></view>
+            <view>库存：{{ThemesGood.num}}件</view>
+            <view class="classname">is_select:{{ThemesGood.is_selected}}</view>
+            <view class="price">￥{{ThemesGood.price}}</view>    
+            <view class="ide" bindtap="cartInsert" data-goodsId="{{ThemesGood.id}}">
+              <image src="../../../image/store2.png"></image>
+            </view>    
+          </view>
+      </view>
+    </block>
+  </view>
+
+  <view style="text-align: center;padding:20px;">
+    <navigator url="../pavilion/index?pavilionId=1">
+      查看更多
+    </navigator>
+    <view class="upload" bindtap="chooseImage">
+      上传图片
+    </view>
+    <view class="downupload" bindtap="downupload">
+      下载图片
+    </view>
+  </view>
+
+</view>
+

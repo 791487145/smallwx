@@ -1,0 +1,14 @@
+<view class="tital">
+  <view class="log">
+    <view>
+      <image class="pic" src="../../image/title.png"></image>
+    </view>
+    <view class="s-title">欢迎来到易游购小程序</view>
+    <view class="select">
+      <navigator url="../wx/index/index">
+        <view class="s-log" >点击进去</view>
+      </navigator>   
+    </view>
+    
+  </view>
+</view>

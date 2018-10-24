@@ -1,0 +1,87 @@
+
+<view class="headerBg">
+	<!-- <div class="back" onclick="javascript:history.go(-1)"></div> -->
+	<view class="title">{{GoodsBase.title}}</view>
+</view>
+<!-- <a href="/" class="indexIcon">首页</a> -->
+<view class="content goodsDetail tabBoxGroup">
+    <view class="tabBox active">
+        <view class="banner">
+            <view class="swiper-container">
+                <view class="swiper-wrapper">
+                    <block wx:for="{{GoodsBase.banner}}" wx:for-item="banner">
+                      <view class="swiper-slide">
+                        <image src="{{banner}}"></image> 
+                      </view>
+                    </block>
+                </view>
+                <view class="pagination"></view>
+            </view>
+        </view>
+        <view class="goodsInfo lineB mb-6">
+            <block wx:for="{{GoodsBase.spec}}" wx:for-item="spec" wx:for-index="idx">
+              
+               <view class="bottom lineT">
+                  <!-- {{--商品价格--}} -->
+                  <text wx:if="{{idx == 0}}">￥<text class="newprice">{{spec.price}}</text></text>
+                  <text wx:if="{{idx == 0}}">原价：￥<text class="text-line market">{{spec.price_market}}</text></text>
+              </view>
+              <view class="bottom lineT" wx:if="{{idx == 0}}">
+                  <text style="float: left;">{{spec.total_amount}}</text>
+                  <text>已售出{{spec.num_sold}}件</text>
+              </view> 
+            </block>
+        </view>
+        <!-- <ul class="goodsSpec mb-6 lineB">
+            <li class="lineB">
+                <a href="javascript:void(0)" class="linkArrow" onclick="bottomPopupShow('addCartPopup')">
+                    <dl>
+                        <dt>已选：</dt>
+                        <dd class="newname"><?php echo $goodsSpecs[0]['name']?></dd>
+                    </dl>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+            @if(empty($goodsGift))
+            @else
+
+                    @foreach($goodsGift as $k=>$goodGift)
+                    <li class="lineB">
+                        <a href="{{url('goods',$goodGift['id'])}}" class="linkArrow">
+                            <dl class="oh">
+                                <dt style="text-overflow: ellipsis;white-space:nowrap;overflow: hidden;width: 95%">
+                                    @if($k==0)
+                                    活动赠品：
+                                    @else
+                                    <span style="margin-left: 62px;"></span>
+                                    @endif
+                                    <?php echo $goodGift['title']?>
+                                </dt>
+                                {{--判断有无赠品--}}
+                            </dl>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    @endforeach
+
+            @endif
+
+        </ul> -->
+
+        <!-- {{--供应商店铺--}} -->  
+        <view class="sellerInfo lineB mb-6 goodsSpec">
+            <navigator url="../store/store?storeId={{GoodsBase.store.id}}">
+            <view class="classname"><image src="{{GoodsBase.store.logo}}"></image><text>{{GoodsBase.store.name}}</text></view>
+              
+              <text class="arrow">进入店铺</text>
+            </navigator>  
+        </view>
+        <view class="classname">
+          <text bindtap="cartInsert" data-goodsId="{{ThemesGood.id}}">加入购物车</text>
+          <text>立即购买</text>
+        </view>
+  </view>
+</view>
+
+
+

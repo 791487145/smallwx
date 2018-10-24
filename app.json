@@ -1,0 +1,12 @@
+{
+  "pages" : [
+     "page/complete/index/index",
+     "page/complete/wx/goods/goods",
+     "page/complete/wx/index/index",
+     "page/complete/wx/pavilion/index"
+     
+     
+     
+  ],
+  "debug": false
+}

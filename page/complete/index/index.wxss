@@ -1,0 +1,19 @@
+.pic{
+    height: 50px;
+    width: 50px;
+    border-radius:30px
+}
+.log{
+    text-align: center;
+    margin-top: 50%;
+}
+.select{
+  height: 25px;
+  width: 150px;
+  margin-left: 30%;
+  margin-top: 10px
+  
+}
+.s-log{
+  float: left;
+}
